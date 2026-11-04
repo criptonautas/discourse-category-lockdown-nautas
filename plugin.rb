@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # name: discourse-category-lockdown-nautas
 # about: Restrict a category to specified groups, redirecting everyone else to the category description topic
-# version: 1.3.2
+# version: 1.3.3
 # authors: Pavilion — Forked by Criptonautas
 # url: https://github.com/somos-criptonautas/discourse-category-lockdown-nautas
 
@@ -65,6 +65,13 @@ after_initialize do
   ::TagsController.prepend ::CategoryLockdown::TopicListExtension
   ::ListableTopicSerializer.prepend ::CategoryLockdown::ExcerptSerializerExtension
   ::Oneboxer.singleton_class.prepend ::CategoryLockdown::OneboxerExtension
+
+  # On Discourse AI's own module, so it runs before AI's check whichever plugin loads first.
+  if defined?(::DiscourseAi::GuardianExtensions)
+    ::DiscourseAi::GuardianExtensions.prepend ::CategoryLockdown::SummaryGuardianExtension
+  else
+    ::Guardian.prepend ::CategoryLockdown::SummaryGuardianExtension
+  end
 
   register_category_custom_field_type("lockdown_whisper_replies", :boolean)
   ::Site.preloaded_category_custom_fields << "lockdown_whisper_replies"

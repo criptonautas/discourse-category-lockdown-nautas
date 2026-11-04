@@ -130,6 +130,19 @@ RSpec.describe "CategoryLockdown content paths", type: :request do
     expect(Topic.similar_to(topic.title, "", member)).to include(topic)
   end
 
+  it "keeps the AI summary of a locked topic from non-members" do
+    skip "Discourse AI is not loaded" if !defined?(::DiscourseAi::GuardianExtensions)
+    allow(SiteSetting).to receive(:ai_summarization_enabled).and_return(true)
+    fresh = Struct.new(:outdated).new(false)
+
+    expect(Guardian.new.can_see_summary?(topic, cached_summary: fresh)).to eq(false)
+    expect(Guardian.new(outsider).can_see_summary?(topic, cached_summary: fresh)).to eq(false)
+    expect(Guardian.new(member).can_see_summary?(topic, cached_summary: fresh)).to eq(true)
+
+    unlock
+    expect(Guardian.new(outsider).can_see_summary?(topic, cached_summary: fresh)).to eq(true)
+  end
+
   it "keeps locked topics out of digests" do
     reader = Fabricate(:user, groups: [allowed_group])
 
