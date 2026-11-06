@@ -22,7 +22,6 @@ after_initialize do
   end
 
   rescue_from(::CategoryLockdown::NoAccessLocked) do
-    opts = { include_ember: true }
     topic_id = params["topic_id"] || params["id"]
     topic_id ||= params["topic"] # if coming from discourse-docs plugin
     topic = Topic.find_by(id: topic_id.to_i) if topic_id
@@ -84,9 +83,6 @@ after_initialize do
     :lockdown_whisper_replies,
     include_condition: -> { SiteSetting.category_lockdown_enabled },
   ) { ::CategoryLockdown.whisper_replies?(object) }
-
-  ::TopicList.preloaded_custom_fields << "lockdown_enabled"
-  ::TopicList.preloaded_custom_fields << "lockdown_allowed_groups"
 
   add_to_serializer(
     :topic_list_item,

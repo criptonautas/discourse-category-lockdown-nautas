@@ -21,16 +21,6 @@ function initializeLockdown(api) {
     }
   );
 
-  api.registerValueTransformer(
-    "topic-list-item-class",
-    ({ value, context }) => {
-      if (context.topic.get("is_locked_down")) {
-        value.push("locked-down");
-      }
-      return value;
-    }
-  );
-
   // Replies in these categories are whispers, so replying to one puts the
   // composer into whisper mode: an eye-slash save icon and a "whisper" save
   // label. Every one of those comes from isWhispering, and none of them mean
