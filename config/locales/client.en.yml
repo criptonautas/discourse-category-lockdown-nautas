@@ -5,6 +5,7 @@ en:
       lockdown_allowed_groups: "Members of these groups can read the topics in this category"
       topic_is_locked_down: "This topic is only available to members of certain groups"
       category_setting_heading: "Category Lockdown"
+      ticket_badge: "Enter with a ticket"
       hidden_replies:
         title:
           one: "%{count} reply you can't see yet"

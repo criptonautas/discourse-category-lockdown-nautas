@@ -22,6 +22,12 @@
   color: var(--primary);
 }
 
+// Same pill as Horizon's hot/solved; the accent colour is what sets it apart.
+.hc-topic-card__status.--locked-down {
+  border: 1px solid var(--tertiary);
+  color: var(--tertiary);
+}
+
 .lockdown-hidden-replies {
   margin: 1em 0;
   padding: 1em 1.25em;

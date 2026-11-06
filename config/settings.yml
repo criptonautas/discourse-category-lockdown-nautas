@@ -3,7 +3,7 @@ plugins:
     default: false
     client: true
   category_lockdown_list_icon:
-    default: "credit-card"
+    default: "ticket"
     client: true
   category_lockdown_allow_crawlers: 
     default: false

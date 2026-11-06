@@ -8,6 +8,7 @@
 enabled_site_setting :category_lockdown_enabled
 
 register_asset "stylesheets/common/category-lockdown.scss"
+register_svg_icon "ticket"
 
 module ::CategoryLockdown
   PLUGIN_NAME = "category-lockdown"

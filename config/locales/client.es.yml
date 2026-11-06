@@ -5,6 +5,7 @@ es:
       lockdown_allowed_groups: "Grupos que pueden leer los temas de esta categoría."
       topic_is_locked_down: "Este tema es solo para algunos grupos."
       category_setting_heading: "Bloqueo de categoría"
+      ticket_badge: "Ingresar con ticket"
       hidden_replies:
         title:
           one: "%{count} respuesta que todavía no puedes ver"
