@@ -15,14 +15,18 @@ export default class LockdownTicket extends Component {
         <span
           class="hc-topic-card__status --locked-down"
           title={{i18n "lockdown.topic_is_locked_down"}}
-          aria-label={{i18n "lockdown.ticket_badge"}}
         >
           {{icon this.siteSettings.category_lockdown_list_icon}}
-          {{#if this.capabilities.viewport.sm}}
-            <span class="hc-topic-card__status-text">
-              {{i18n "lockdown.ticket_badge"}}
-            </span>
-          {{/if}}
+          {{! Icon only below sm, but the text stays for screen readers: aria-label on a span is not a name. }}
+          <span
+            class={{if
+              this.capabilities.viewport.sm
+              "hc-topic-card__status-text"
+              "sr-only"
+            }}
+          >
+            {{i18n "lockdown.ticket_badge"}}
+          </span>
         </span>
       {{/if}}
     {{/if}}
