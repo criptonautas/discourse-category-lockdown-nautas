@@ -3,7 +3,7 @@
 # about: Restrict a category to specified groups, redirecting everyone else to the category description topic
 # version: 1.3.3
 # authors: Pavilion — Forked by Criptonautas
-# url: https://github.com/somos-criptonautas/discourse-category-lockdown-nautas
+# url: https://github.com/criptonautas/discourse-category-lockdown-nautas
 
 enabled_site_setting :category_lockdown_enabled
 
