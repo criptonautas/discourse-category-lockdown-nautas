@@ -9,6 +9,9 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
+permissions:
+  contents: read
+
 jobs:
   ci:
     uses: discourse/.github/.github/workflows/discourse-plugin.yml@v1
