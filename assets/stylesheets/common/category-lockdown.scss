@@ -28,6 +28,23 @@
   color: var(--tertiary);
 }
 
+// Docs and classic lists are not Horizon cards: there the ticket stands alone,
+// with no pill and its text kept only for screen readers.
+.--locked-down:not(.hc-topic-card .--locked-down) {
+  padding: 0;
+  border: none;
+  background: none;
+
+  .hc-topic-card__status-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
 .lockdown-hidden-replies {
   margin: 1em 0;
   padding: 1em 1.25em;
